@@ -14,10 +14,11 @@ public class RestaurantDaoImpl implements IRestaurantDao {
     public Restaurant save(Restaurant r) {
         Connection conn = SingletonConnection.getConnection();
         try {
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO RESTAURANTS(NOM_RESTAURANT, TYPE_CUISINE, ADRESSE) VALUES(?, ?, ?)");
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO RESTAURANTS(NOM_RESTAURANT, TYPE_CUISINE, ADRESSE, NOTE) VALUES(?, ?, ?, ?)");
             ps.setString(1, r.getNomRestaurant());
             ps.setString(2, r.getTypeCuisine());
             ps.setString(3, r.getAdresse());
+            ps.setDouble(4, r.getNote()); // Ajout de la note
             ps.executeUpdate();
             
             // Récupération de l'ID généré
@@ -48,6 +49,7 @@ public class RestaurantDaoImpl implements IRestaurantDao {
                 r.setNomRestaurant(rs.getString("NOM_RESTAURANT"));
                 r.setTypeCuisine(rs.getString("TYPE_CUISINE"));
                 r.setAdresse(rs.getString("ADRESSE"));
+                r.setNote(rs.getDouble("NOTE")); // Ajout de la note
                 restaurants.add(r);
             }
         } catch (SQLException e) {
@@ -69,6 +71,7 @@ public class RestaurantDaoImpl implements IRestaurantDao {
                 r.setNomRestaurant(rs.getString("NOM_RESTAURANT"));
                 r.setTypeCuisine(rs.getString("TYPE_CUISINE"));
                 r.setAdresse(rs.getString("ADRESSE"));
+                r.setNote(rs.getDouble("NOTE")); // Ajout de la note
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -80,11 +83,12 @@ public class RestaurantDaoImpl implements IRestaurantDao {
     public Restaurant updateRestaurant(Restaurant r) {
         Connection conn = SingletonConnection.getConnection();
         try {
-            PreparedStatement ps = conn.prepareStatement("UPDATE RESTAURANTS SET NOM_RESTAURANT = ?, TYPE_CUISINE = ?, ADRESSE = ? WHERE ID_RESTAURANT = ?");
+            PreparedStatement ps = conn.prepareStatement("UPDATE RESTAURANTS SET NOM_RESTAURANT = ?, TYPE_CUISINE = ?, ADRESSE = ?, NOTE = ? WHERE ID_RESTAURANT = ?");
             ps.setString(1, r.getNomRestaurant());
             ps.setString(2, r.getTypeCuisine());
             ps.setString(3, r.getAdresse());
-            ps.setLong(4, r.getIdRestaurant());
+            ps.setDouble(4, r.getNote()); // Ajout de la note
+            ps.setLong(5, r.getIdRestaurant());
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {

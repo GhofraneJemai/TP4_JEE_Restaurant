@@ -15,6 +15,10 @@
 			<div class="card-header">Confirmation Ajout Restaurant</div>
 			<div class="card-body">
 				<div class="form-group">
+					<label class="control-label">ID du Restaurant :</label> 
+					<input type="text" name="idRestaurant" class="form-control" value="${restaurant.idRestaurant}" readonly />
+				</div>
+				<div class="form-group">
 					<label class="control-label">Nom du Restaurant :</label> 
 					<input type="text" name="nomRestaurant" class="form-control" value="${restaurant.nomRestaurant}" readonly />
 				</div>
@@ -25,6 +29,10 @@
 				<div class="form-group">
 					<label class="control-label">Adresse :</label> 
 					<input type="text" name="adresse" class="form-control" value="${restaurant.adresse}" readonly />
+				</div>
+				<div class="form-group">
+					<label class="control-label">Note :</label> 
+					<input type="text" name="note" class="form-control" value="${restaurant.note}" readonly />
 				</div>
 			</div>
 		</div>

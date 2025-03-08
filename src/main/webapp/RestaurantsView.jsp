@@ -14,21 +14,27 @@
 		<input type="text" name="motCle" value="${modele.motCle}"> 
 		<input type="submit" value="OK">
 	</form>
-	<table border="1" width="80%">
-		<tr>
-			<th>ID</th>
-			<th>Nom du Restaurant</th>
-			<th>Type de Cuisine</th>
-			<th>Adresse</th>
-		</tr>
-		<c:forEach items="${modele.restaurants}" var="r">
-			<tr>
-				<td>${r.idRestaurant}</td>
-				<td>${r.nomRestaurant}</td>
-				<td>${r.typeCuisine}</td>
-				<td>${r.adresse}</td>
-			</tr>
-		</c:forEach>
-	</table>
+    <table border="1" width="80%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom du Restaurant</th>
+                <th>Type de Cuisine</th>
+                <th>Adresse</th>
+                <th>Note</th> <!-- Nouvelle colonne pour la note -->
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${modele.restaurants}" var="r">
+                <tr>
+                    <td>${r.idRestaurant}</td>
+                    <td>${r.nomRestaurant}</td>
+                    <td>${r.typeCuisine}</td>
+                    <td>${r.adresse}</td>
+                    <td>${r.note}</td> <!-- Affichage de la note -->
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
 </body>
 </html>

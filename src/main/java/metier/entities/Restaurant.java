@@ -7,16 +7,18 @@ public class Restaurant implements Serializable {
     private String nomRestaurant;
     private String typeCuisine;
     private String adresse;
+    private Double note; // Ajout de l'attribut note
 
     public Restaurant() {
         super();
     }
 
-    public Restaurant(String nomRestaurant, String typeCuisine, String adresse) {
+    public Restaurant(String nomRestaurant, String typeCuisine, String adresse, Double note) {
         super();
         this.nomRestaurant = nomRestaurant;
         this.typeCuisine = typeCuisine;
         this.adresse = adresse;
+        this.note = note; // Initialisation de l'attribut note
     }
 
     public Long getIdRestaurant() {
@@ -51,9 +53,17 @@ public class Restaurant implements Serializable {
         this.adresse = adresse;
     }
 
+    public Double getNote() {
+        return note; // Getter pour l'attribut note
+    }
+
+    public void setNote(Double note) {
+        this.note = note; // Setter pour l'attribut note
+    }
+
     @Override
     public String toString() {
         return "Restaurant [idRestaurant=" + idRestaurant + ", nomRestaurant=" + nomRestaurant + 
-               ", typeCuisine=" + typeCuisine + ", adresse=" + adresse + "]";
+               ", typeCuisine=" + typeCuisine + ", adresse=" + adresse + ", note=" + note + "]";
     }
 }

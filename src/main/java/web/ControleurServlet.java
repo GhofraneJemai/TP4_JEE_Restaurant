@@ -46,7 +46,8 @@ public class ControleurServlet extends HttpServlet {
             String nom = request.getParameter("nomRestaurant");
             String typeCuisine = request.getParameter("typeCuisine");
             String adresse = request.getParameter("adresse");
-            Restaurant r = metier.save(new Restaurant(nom, typeCuisine, adresse));
+            Double note = Double.parseDouble(request.getParameter("note")); // Récupération de la note
+            Restaurant r = metier.save(new Restaurant(nom, typeCuisine, adresse, note)); // Création avec la note
             request.setAttribute("restaurant", r);
             response.sendRedirect("chercher.do?motCle=");
         }
@@ -66,11 +67,13 @@ public class ControleurServlet extends HttpServlet {
             String nom = request.getParameter("nomRestaurant");
             String typeCuisine = request.getParameter("typeCuisine");
             String adresse = request.getParameter("adresse");
+            Double note = Double.parseDouble(request.getParameter("note")); // Récupération de la note
             Restaurant r = new Restaurant();
             r.setIdRestaurant(id);
             r.setNomRestaurant(nom);
             r.setTypeCuisine(typeCuisine);
             r.setAdresse(adresse);
+            r.setNote(note); // Ajout de la note
             metier.updateRestaurant(r);
             request.setAttribute("restaurant", r);
             response.sendRedirect("chercher.do?motCle=");
